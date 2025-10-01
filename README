@@ -1,0 +1,141 @@
+Battleship Game - React & Node.js
+This repository contains the source code for a full-stack, two-player Battleship game. The frontend is built with React, and the backend is a Node.js API powered by Express and SQLite.
+
+Features
+Real-time Two-Player Gameplay: Create a game and share the unique Game ID with a friend to play.
+
+Interactive Ship Placement: Visually place your fleet of five ships on the grid.
+
+Classic Gameplay Loop: Take turns firing shots at your opponent's grid.
+
+Visual Feedback: See hits and misses on both your grid and the opponent's grid.
+
+Persistent Game State: The game state is saved in a local SQLite database, so games are not lost on server restart.
+
+State Polling: The frontend automatically polls the backend for the latest game state.
+
+Tech Stack
+Frontend:
+
+React
+
+Inline CSS for styling (no external CSS libraries needed)
+
+Backend:
+
+Node.js
+
+Express for the API server
+
+SQLite3 for the database
+
+Utilities:
+
+nodemon for automatic server restarts during development.
+
+cors for handling cross-origin requests.
+
+uuid for generating unique game and player IDs.
+
+Getting Started
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+Prerequisites
+You need to have Node.js and pnpm installed on your machine.
+
+Installation & Running the Game
+Clone the repository:
+
+git clone <your-repository-url>
+cd <repository-folder>
+
+Set up the Backend:
+
+Navigate to the backend directory (where server.js is located).
+
+Install the dependencies:
+
+pnpm install
+
+Start the backend server. The database file battleship.db will be created automatically.
+
+pnpm run dev
+
+The server will be running on http://localhost:3000.
+
+Set up the Frontend:
+
+Navigate to the frontend directory (where battleship-react-ui.jsx is located).
+
+If you are using a standard React setup (like Create React App or Vite), follow these steps:
+
+Install the dependencies:
+
+pnpm install
+
+Start the React development server:
+
+pnpm run dev
+
+The React app will open in your browser, typically at http://localhost:5173.
+
+How to Play
+Start the Game: Open the frontend application in your browser. Click "Create New Game".
+
+Invite a Friend: Copy the generated Game ID and share it with your opponent.
+
+Join the Game: The second player opens the application, pastes the Game ID into the input field, and clicks "Join".
+
+Place Ships: Both players will be prompted to place their ships on their respective grids.
+
+Battle!: Once both players have placed their ships, the game begins. Take turns clicking on the opponent's grid to fire shots.
+
+Win: The first player to sink all five of their opponent's ships wins the game!
+
+API Endpoints
+The backend provides the following REST API endpoints:
+
+Method
+
+Endpoint
+
+Description
+
+POST
+
+/games
+
+Creates a new game and a new player (Player 1).
+
+POST
+
+/games/:gameId/join
+
+Allows a second player to join an existing game.
+
+POST
+
+/games/:gameId/ships
+
+Submits the ship placements for a player.
+
+POST
+
+/games/:gameId/shot
+
+Fires a shot at a specific coordinate.
+
+GET
+
+/games/:gameId/state
+
+Retrieves the current state of the game for a player.
+
+Future Improvements
+WebSockets: Replace HTTP polling with WebSockets for true real-time communication, reducing latency and server load.
+
+Player Authentication: Implement a user account system to track game history and stats.
+
+Animations & Sound: Add animations for shots and sinking ships, and include sound effects for a more immersive experience.
+
+Improved UI/UX: Enhance the user interface with better visuals, ship previews, and clearer game-over screens.
